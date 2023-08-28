@@ -6,27 +6,22 @@ import './drop-file-input.css';
 import { ImageConfig } from '../../config/ImageConfig'; 
 import uploadImg from '../../assets/cloud-upload-regular-240.png';
 
-const DropFileInput = props => {
+const DropFileInput = ({ onFileChange }) => { 
 
     const wrapperRef = useRef(null);
-
     const [fileList, setFileList] = useState([]);
-    const [assetname, setAssetname] = useState("");
-    const [gametitle, setGametitle] = useState("");
-    const [description, setDescription] = useState("");
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
-
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
-
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
+
 
     const onFileDrop = (e) => {
         const newFile = e.target.files[0];
         if (newFile) {
             const updatedList = [newFile];
             setFileList(updatedList);
-            props.onFileChange(updatedList);
+            onFileChange(updatedList); 
         }
     }
 
@@ -34,25 +29,7 @@ const DropFileInput = props => {
         const updatedList = [...fileList];
         updatedList.splice(fileList.indexOf(file), 1);
         setFileList(updatedList);
-        props.onFileChange(updatedList);
-    }
-
-    const onAssetnameChange = (e) => {
-        const newAssetname = e.target.value;
-        console.log("New Assetname: ", newAssetname);
-        setAssetname(newAssetname);
-    }
-
-    const onGametitleChange = (e) => {
-        const newGametitle = e.target.value;
-        console.log("New Gametitle: ", newGametitle);
-        setGametitle(newGametitle);
-    }
-
-    const onDescriptionChange = (e) => {
-        const newDescription = e.target.value;
-        console.log("New Description: ", newDescription);
-        setDescription(newDescription);
+        onFileChange(updatedList); 
     }
 
     return (
@@ -91,38 +68,12 @@ const DropFileInput = props => {
                     </div>
                 ) : null
             }
-            <p>Asset Name</p>
-            <input
-                type="text"
-                value={assetname}
-                placeholder="Enter assetname"
-                className="metadata_field"
-                onChange={onAssetnameChange}
-            />
-
-            <p>Game Title</p>
-            <input
-                type="text"
-                value={gametitle}
-                placeholder="Enter the game's title"
-                className="metadata_field"
-                onChange={onGametitleChange}
-            />
-
-            <p>Description</p>
-            <input
-                type="text"
-                value={description}
-                placeholder="Add a description"
-                className="metadata_field"
-                onChange={onDescriptionChange}
-            />
         </>
     );
 }
 
 DropFileInput.propTypes = {
-    onFileChange: PropTypes.func
+    onFileChange: PropTypes.func,
 }
 
 export default DropFileInput;
