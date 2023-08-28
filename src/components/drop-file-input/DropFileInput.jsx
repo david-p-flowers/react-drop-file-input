@@ -6,24 +6,22 @@ import './drop-file-input.css';
 import { ImageConfig } from '../../config/ImageConfig'; 
 import uploadImg from '../../assets/cloud-upload-regular-240.png';
 
-const DropFileInput = props => {
+const DropFileInput = ({ onFileChange }) => { 
 
     const wrapperRef = useRef(null);
-
     const [fileList, setFileList] = useState([]);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
-
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
-
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
+
 
     const onFileDrop = (e) => {
         const newFile = e.target.files[0];
         if (newFile) {
-            const updatedList = [...fileList, newFile];
+            const updatedList = [newFile];
             setFileList(updatedList);
-            props.onFileChange(updatedList);
+            onFileChange(updatedList); 
         }
     }
 
@@ -31,7 +29,7 @@ const DropFileInput = props => {
         const updatedList = [...fileList];
         updatedList.splice(fileList.indexOf(file), 1);
         setFileList(updatedList);
-        props.onFileChange(updatedList);
+        onFileChange(updatedList); 
     }
 
     return (
@@ -75,7 +73,9 @@ const DropFileInput = props => {
 }
 
 DropFileInput.propTypes = {
-    onFileChange: PropTypes.func
+    onFileChange: PropTypes.func,
 }
 
 export default DropFileInput;
+
+
