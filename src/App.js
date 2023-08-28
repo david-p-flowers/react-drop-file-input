@@ -7,9 +7,13 @@ import DropFileInput from './components/drop-file-input/DropFileInput';
 
 function App() {
     const [file, setFile] = useState(null);
-    const [assetname, setAssetname] = useState("");
     const [gametitle, setGametitle] = useState("");
     const [description, setDescription] = useState("");
+    const [clipLength, setClipLength] = useState("");
+    const [weather, setWeather] = useState("");
+    const [timeOfDay, setTimeOfDay] = useState("");
+    const [carType, setCarType] = useState("");
+    const [makeAndModel, setMakeAndModel] = useState("");
 
     const onFileChange = (files) => {
         const currentFile = files[0];
@@ -20,11 +24,14 @@ function App() {
     const uploadToDatabase = (url) => { 
         const docData = {
             mostRecentUploadURL: url,
-            asset: assetname, 
             game: gametitle,
             description: description,
-            carmodel: "test",
-            metadata: "test",
+            clipLength: clipLength,
+            weather: weather,
+            timeOfDay: timeOfDay,
+            carType: carType,
+            makeAndModel: makeAndModel
+
         }
 
         const collectionRef = collection(db, "assets");
@@ -32,7 +39,6 @@ function App() {
         addDoc(collectionRef, docData)
           .then((docRef) => {
             console.log("Document added with ID: ", docRef.id);
-            console.log("Assetname: ", assetname);
             console.log("Gametitle: ", gametitle);
             console.log("Description: ", description);
           })
@@ -68,15 +74,6 @@ function App() {
             <DropFileInput onFileChange={onFileChange} />
             <br />
             <div>
-                <p>Asset Name</p>
-                <input
-                    type="text"
-                    value={assetname}
-                    placeholder="Enter assetname"
-                    className="metadata_field"
-                    onChange={(e) => setAssetname(e.target.value)}
-                />
-
                 <p>Game Title</p>
                 <input
                     type="text"
@@ -85,7 +82,7 @@ function App() {
                     className="metadata_field"
                     onChange={(e) => setGametitle(e.target.value)}
                 />
-
+    
                 <p>Description</p>
                 <input
                     type="text"
@@ -93,6 +90,43 @@ function App() {
                     placeholder="Add a description"
                     className="metadata_field"
                     onChange={(e) => setDescription(e.target.value)}
+                />
+    
+                {/* New Metadata Fields */}
+                <p>Weather</p>
+                <input
+                    type="text"
+                    value={weather}
+                    placeholder="Enter weather"
+                    className="metadata_field"
+                    onChange={(e) => setWeather(e.target.value)}
+                />
+    
+                <p>Time of Day</p>
+                <input
+                    type="text"
+                    value={timeOfDay}
+                    placeholder="Enter time of day"
+                    className="metadata_field"
+                    onChange={(e) => setTimeOfDay(e.target.value)}
+                />
+    
+                <p>Car Type</p>
+                <input
+                    type="text"
+                    value={carType}
+                    placeholder="Enter car type"
+                    className="metadata_field"
+                    onChange={(e) => setCarType(e.target.value)}
+                />
+    
+                <p>Make and Model</p>
+                <input
+                    type="text"
+                    value={makeAndModel}
+                    placeholder="Enter make and model"
+                    className="metadata_field"
+                    onChange={(e) => setMakeAndModel(e.target.value)}
                 />
             </div>
             <br />
