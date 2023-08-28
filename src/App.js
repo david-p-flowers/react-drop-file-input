@@ -7,7 +7,7 @@ import DropFileInput from './components/drop-file-input/DropFileInput';
 
 function App() {
     const [file, setFile] = useState(null);
-    const [gametitle, setGametitle] = useState("");
+    const [clipTitle, setClipTitle] = useState("");
     const [description, setDescription] = useState("");
     const [clipLength, setClipLength] = useState("");
     const [weather, setWeather] = useState("");
@@ -24,7 +24,7 @@ function App() {
     const uploadToDatabase = (url) => { 
         const docData = {
             mostRecentUploadURL: url,
-            game: gametitle,
+            clipTitle: clipTitle,
             description: description,
             clipLength: clipLength,
             weather: weather,
@@ -39,7 +39,7 @@ function App() {
         addDoc(collectionRef, docData)
           .then((docRef) => {
             console.log("Document added with ID: ", docRef.id);
-            console.log("Gametitle: ", gametitle);
+            console.log("clipTitle: ", clipTitle);
             console.log("Description: ", description);
           })
           .catch((error) => {
@@ -74,13 +74,13 @@ function App() {
             <DropFileInput onFileChange={onFileChange} />
             <br />
             <div>
-                <p>Game Title</p>
+                <p>Clip Title</p>
                 <input
                     type="text"
-                    value={gametitle}
+                    value={clipTitle}
                     placeholder="Enter the game's title"
                     className="metadata_field"
-                    onChange={(e) => setGametitle(e.target.value)}
+                    onChange={(e) => setClipTitle(e.target.value)}
                 />
     
                 <p>Description</p>
@@ -90,6 +90,15 @@ function App() {
                     placeholder="Add a description"
                     className="metadata_field"
                     onChange={(e) => setDescription(e.target.value)}
+                />
+
+                <p>clipLength</p>
+                <input
+                    type="text"
+                    value={clipLength}
+                    placeholder="How long is the clip"
+                    className="metadata_field"
+                    onChange={(e) => setClipLength(e.target.value)}
                 />
     
                 {/* New Metadata Fields */}
