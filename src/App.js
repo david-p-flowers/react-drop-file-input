@@ -9,6 +9,7 @@ function App() {
     const [file, setFile] = useState(null);
     const [clipTitle, setClipTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [origin, setOrigin] = useState("");
     const [year, setYear] = useState("");
     const [clipLength, setClipLength] = useState("");
     const [weather, setWeather] = useState("");
@@ -27,11 +28,13 @@ function App() {
             mostRecentUploadURL: url,
             clipTitle: clipTitle,
             description: description,
+            origin: origin,
             clipLength: clipLength,
             weather: weather,
             timeOfDay: timeOfDay,
             carType: carType,
-            makeAndModel: makeAndModel
+            makeAndModel: makeAndModel,
+            year: year,
 
         }
 
@@ -93,13 +96,22 @@ function App() {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
+                <p>Origin</p>
+                <input
+                    type="text"
+                    value={origin}
+                    placeholder="Add origin"
+                    className="metadata_field"
+                    onChange={(e) => setOrigin(e.target.value)}
+                />
+
                 <p>Year</p>
                 <input
                     type="text"
                     value={year}
                     placeholder="Add clip year"
                     className="metadata_field"
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e) => setYear(e.target.value)}
                 />
 
                 <p>clipLength</p>
