@@ -9,6 +9,7 @@ function App() {
     const [file, setFile] = useState(null);
     const [clipTitle, setClipTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [year, setYear] = useState("");
     const [clipLength, setClipLength] = useState("");
     const [weather, setWeather] = useState("");
     const [timeOfDay, setTimeOfDay] = useState("");
@@ -88,6 +89,15 @@ function App() {
                     type="text"
                     value={description}
                     placeholder="Add a description"
+                    className="metadata_field"
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+
+                <p>Year</p>
+                <input
+                    type="text"
+                    value={year}
+                    placeholder="Add clip year"
                     className="metadata_field"
                     onChange={(e) => setDescription(e.target.value)}
                 />
