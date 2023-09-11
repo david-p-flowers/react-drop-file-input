@@ -16,6 +16,7 @@ function App() {
     const [timeOfDay, setTimeOfDay] = useState("");
     const [carType, setCarType] = useState("");
     const [makeAndModel, setMakeAndModel] = useState("");
+    const [uploadedClips, setUploadedClips] = useState([]); // Initialize the uploadedClips state
 
     const onFileChange = (files) => {
         const currentFile = files[0];
@@ -35,7 +36,6 @@ function App() {
             carType: carType,
             makeAndModel: makeAndModel,
             year: year,
-
         }
 
         const collectionRef = collection(db, "assets");
@@ -45,6 +45,20 @@ function App() {
             console.log("Document added with ID: ", docRef.id);
             console.log("clipTitle: ", clipTitle);
             console.log("Description: ", description);
+            
+            // Add the uploaded clip to the state
+            setUploadedClips((prevClips) => [docData, ...prevClips.slice(0, 9)]);
+            
+            // Clear the form fields or reset them as needed
+            setClipTitle("");
+            setDescription("");
+            setOrigin("");
+            setYear("");
+            setClipLength("");
+            setWeather("");
+            setTimeOfDay("");
+            setCarType("");
+            setMakeAndModel("");
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
@@ -82,7 +96,7 @@ function App() {
                 <input
                     type="text"
                     value={clipTitle}
-                    placeholder="Enter the game's title"
+                    placeholder="Enter the clip's title"
                     className="metadata_field"
                     onChange={(e) => setClipTitle(e.target.value)}
                 />
@@ -96,24 +110,8 @@ function App() {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
-                <p>Origin</p>
-                <input
-                    type="text"
-                    value={origin}
-                    placeholder="Add origin"
-                    className="metadata_field"
-                    onChange={(e) => setOrigin(e.target.value)}
-                />
-
-                <p>Year</p>
-                <input
-                    type="text"
-                    value={year}
-                    placeholder="Add clip year"
-                    className="metadata_field"
-                    onChange={(e) => setYear(e.target.value)}
-                />
-
+                {/* Add fields for origin, year, and other metadata as needed */}
+    
                 <p>clipLength</p>
                 <input
                     type="text"
@@ -163,6 +161,16 @@ function App() {
             <br />
             <br />
             <button onClick={handleClick}>Upload and Save</button>
+            
+            {/* Display the history log */}
+            <div className="history-log">
+              <h3>Upload History</h3>
+              <ul>
+                {uploadedClips.map((clip, index) => (
+                  <li key={index}>{clip.clipTitle}</li>
+                ))}
+              </ul>
+            </div>
         </div>
     );
 }
