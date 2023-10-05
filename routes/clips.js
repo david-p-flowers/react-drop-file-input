@@ -18,30 +18,29 @@ router.post('/upload', async (req, res) => {
 
 // Define a route to pull clips and metadata
 router.get('/get-clips', async (req, res) => {
-  try {
-    const clipsWithMetadata = [];
-    const clipsCollection = db.collection('clips');
-    
-    const querySnapshot = await clipsCollection.get();
+    try {
+        const clipsWithMetadata = [];
+        const clipsCollection = db.collection('clips');
+        
+        const querySnapshot = await clipsCollection.get();
 
-    querySnapshot.forEach(async (doc) => {
-      const clipData = doc.data();
+        querySnapshot.forEach(async (doc) => {
+            const clipData = doc.data();
 
-      // Fix the template string by using backticks (``) instead of single quotes ('')
-      const storageRef = admin.storage().ref(`videos/${clipData.videoFileName}`);
-      const downloadURL = await getDownloadURL(storageRef);
+            const storageRef = admin.storage().ref('videos/${clipData.videoFileName}');
+            const downloadURL = await getDownloadURL(storageRef);
 
-      clipData.videoDownloadURL = downloadURL;
+            clipData.videoDownloadURL = downloadURL;
 
-      clipsWithMetadata.push(clipData);
-    });
+            clipsWithMetadata.push(clipData);
+        });
 
-    // Send the array of clips with metadata as the response
-    res.status(200).json(clipsWithMetadata);
-  } catch (error) {
-    console.error('Error retrieving clips:', error);
-    res.status(500).json({ error: 'Unable to retrieve clips' });
-  }
+        // Send the clipsWithMetadata as a JSON response
+        res.json(clipsWithMetadata);
+    } catch (error) {
+        console.error('Error getting clips:', error);
+        res.status(500).json({ error: 'Unable to get clips' });
+    }
 });
 
 module.exports = router;

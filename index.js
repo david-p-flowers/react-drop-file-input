@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
 const clipsRouter = require('./routes/clips');
-const serviceAccount = require('./firebase-admin-key.json'); // Replace with your key file
+const serviceAccount = require('./firebase-admin-key.json');
 
 const app = express();
 app.use(cors());
