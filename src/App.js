@@ -16,7 +16,7 @@ function App() {
     const [timeOfDay, setTimeOfDay] = useState("");
     const [carType, setCarType] = useState("");
     const [makeAndModel, setMakeAndModel] = useState("");
-    const [uploadedClips, setUploadedClips] = useState([]); // Initialize the uploadedClips state
+    const [uploadedClips, setUploadedClips] = useState([]);
 
     const onFileChange = (files) => {
         const currentFile = files[0];
@@ -29,7 +29,7 @@ function App() {
             mostRecentUploadURL: url,
             clipTitle: clipTitle,
             description: description,
-            origin: origin,
+            origin: origin, // Include the origin field here
             clipLength: clipLength,
             weather: weather,
             timeOfDay: timeOfDay,
@@ -111,6 +111,15 @@ function App() {
                 />
 
                 {/* Add fields for origin, year, and other metadata as needed */}
+    
+                <p>Origin</p>
+                <input
+                    type="text"
+                    value={origin}
+                    placeholder="Enter origin"
+                    className="metadata_field"
+                    onChange={(e) => setOrigin(e.target.value)}
+                />
     
                 <p>clipLength</p>
                 <input
