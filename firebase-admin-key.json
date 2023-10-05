@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gaming-assets",
+  "private_key_id": "fac7fce57290dee002844606fa6554c0a38e9d94",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAkZBri8LA5vQ5\nBQ33upW6ibBhlUJnma4402K6aemwTrYOEvbFQ4KQZd70m2cetgPPORp0L6/M5bhR\nEfI6w0TUGW/lrAGkPhCGCJwPCrVqibKvpweRdMWNFW/OwG11gh1MiO7TvwDzuq2X\nhXq1UTRto7ZArOjMyBlbpGkxpM8H0FUfTFFKD0KifeWJky8lLEcl2ldYwko5g2sv\nbiSlH/r8cdZYedbKftkSkXJM0fLwm3XPicrsl3UazGGcuTDs0vsDa/Px5MeScL8P\n4SIJeav+AQebuJs2oPrxnWFU9ukT6Ow72chIWw2MPPCBI9fxWLCCmaA+QskipJ3N\niRG55M3lAgMBAAECggEAAJkmXujDC1P5Jw9lXBzcrjgTSWcfThcW7xJCpXWcX9g+\nwVhwIwWMq31fISXPPwDHWw0NKfzXI2A4H5Hz5xhumrVH7By9Fiq8yzQ0cYK4NMNT\nJmLy2qug/+LOXOp4H8jufyuSiMUR8BZNlI6GzRCaUX56tUS6pgUEUlnDNRl5ky3V\nhN98TOpzTt3oI4ADw4yUl3D25izs3knpMlf/xsj6FkPTwigq1tJ5/ovU+Fi/lSwD\n2bcVrEBx53+QP85F6G407eaPxlX+FhQGHrFXBlO2vSekeTyYFAULznwQ1F201ghf\noMV3kXZPUGjBxZXvBVTbO4QpPp2fhw8mMwv7wMaKWQKBgQD9DTHEOsdMstNVZziL\nlVhqHziAxRMHIQNlFgY8xyf/ZR2n+qmJCdjnz0+uCU365W4h9gw6BjozsFpARAFM\nEPbqGfdEhcTwGvLjyipWoNdX9wf/3wQ393RWJ6lhZG70UW5LtjsEcpXT8pswR+Yr\nLvJjI9JsHB4L3uu8Iy2XM6PyzwKBgQDCz/XeiQ5X3QndU/P1Fa536AH529OrsOtL\nsEuW6ZhVECTf7T81X28ZuKl6m+Kcm4aSjeDpv/4Am2XfwCvuiTts0PLUhI73ED++\ntYtkuS7RrXi+NRNM2SvbMbiCKbIzdAHX6ldsKOj2z1udFuhqypnmTO57lLrwtoyM\na8MV/JRxCwKBgFP1PL3OgrF/435CcRBezKbpFOYkfNuwqF+xnwArU6n48o35LKa7\nDaxbrCQiEi1cUd4StJvL1SOxL0CDT6rdNg8V7mRdvamsR0osmT+Eve4BmDXc2Jl5\nELBFGH2nxOhq3B1iqNIg8nUP2U17jXJmcSVTjU0xRwbJP418XnP8PjkhAoGAcM40\n5Ahe6tfOh3++ixNj9IC+7Cyzk/6dMTXDf36CO/deMuBRMpmxXqaEVMABZ4fTU/ed\n3hzTewyA4CCKD9UdOPSBODgOBNg+4TKEpe1pQ/b8LL/VDjHO6F0RJyX3zz2Ed791\noebKh2go93y1Vmk81pODoMHNweci2Yjo7UlVt2MCgYEAjZD7CHl8u0H/mmBK90ed\n8FBG9U6qVLR60Z0U5Prvis9lNFszypHql0j7Ik3yDeDJnl4a7Z+epqAi5oyRcenY\ny4otI8j2BXT7+Kqoadoj/hIcY97hVBgG7ZIyX5Bi9pqiJi/bV8I0J2N7KJLvkMae\nsGCHK+wJWCMFudRVvZiusf0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fijqw@gaming-assets.iam.gserviceaccount.com",
+  "client_id": "116882486262035379646",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fijqw%40gaming-assets.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
