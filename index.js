@@ -1,18 +1,19 @@
-const express = require('express');
-const cors = require('cors');
 const admin = require('firebase-admin');
-const clipsRouter = require('./routes/clips');
 const serviceAccount = require('./firebase-admin-key.json');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.use('/api/clips', clipsRouter);
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
+const express = require('express');
+const cors = require('cors');
+const clipsRouter = require('./routes/clips');
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use('/api/clips', clipsRouter);
+
 
 // Define your API routes and interact with Firestore here
 

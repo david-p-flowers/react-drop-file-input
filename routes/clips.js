@@ -1,8 +1,8 @@
+const { getDownloadURL } = require('@firebase/storage');
 const express = require('express');
 const admin = require('firebase-admin');
 const router = express.Router();
 const db = admin.firestore();
-const { getDownloadURL } = require('firebase/storage');
 
 // Define a route to upload clips
 router.post('/upload', async (req, res) => {
@@ -27,7 +27,7 @@ router.get('/get-clips', async (req, res) => {
         querySnapshot.forEach(async (doc) => {
             const clipData = doc.data();
 
-            const storageRef = admin.storage().ref('videos/${clipData.videoFileName}');
+            const storageRef = admin.storage().ref(`videos/${clipData.videoFileName}`);
             const downloadURL = await getDownloadURL(storageRef);
 
             clipData.videoDownloadURL = downloadURL;
