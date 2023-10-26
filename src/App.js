@@ -9,14 +9,15 @@ function App() {
     const [file, setFile] = useState(null);
     const [clipTitle, setClipTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [origin, setOrigin] = useState("");
-    const [year, setYear] = useState("");
+    const [gameTitle, setGameTitle] = useState("");
+    const [gameYear, setGameYear] = useState("");
     const [clipLength, setClipLength] = useState("");
     const [weather, setWeather] = useState("");
     const [timeOfDay, setTimeOfDay] = useState("");
     const [carType, setCarType] = useState("");
     const [makeAndModel, setMakeAndModel] = useState("");
     const [uploadedClips, setUploadedClips] = useState([]);
+    const [assetInUse, setAssetInUse] = useState("")
 
     const onFileChange = (files) => {
         const currentFile = files[0];
@@ -29,13 +30,14 @@ function App() {
             mostRecentUploadURL: url,
             clipTitle: clipTitle,
             description: description,
-            origin: origin, // Include the origin field here
+            gameTitle: gameTitle,
             clipLength: clipLength,
             weather: weather,
             timeOfDay: timeOfDay,
             carType: carType,
             makeAndModel: makeAndModel,
-            year: year,
+            gameYear: gameYear,
+            assetInUse: assetInUse,
         }
 
         const collectionRef = collection(db, "assets");
@@ -52,13 +54,14 @@ function App() {
             // Clear the form fields or reset them as needed
             setClipTitle("");
             setDescription("");
-            setOrigin("");
-            setYear("");
+            setGameTitle("");
+            setGameYear("");
             setClipLength("");
             setWeather("");
             setTimeOfDay("");
             setCarType("");
             setMakeAndModel("");
+            setAssetInUse("");
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
@@ -112,16 +115,24 @@ function App() {
 
                 {/* Add fields for origin, year, and other metadata as needed */}
     
-                <p>Origin</p>
+                <p>Title of Game Used in Clip</p>
                 <input
                     type="text"
-                    value={origin}
-                    placeholder="Enter origin"
+                    value={gameTitle}
+                    placeholder="Enter game title"
                     className="metadata_field"
-                    onChange={(e) => setOrigin(e.target.value)}
+                    onChange={(e) => setGameTitle(e.target.value)}
+                />
+                <p>Year Game Released</p>
+                <input
+                    type="text"
+                    value={gameYear}
+                    placeholder="Enter game year"
+                    className="metadata_field"
+                    onChange={(e) => setGameYear(e.target.value)}
                 />
     
-                <p>clipLength</p>
+                <p>Length of the Clip</p>
                 <input
                     type="text"
                     value={clipLength}
@@ -147,6 +158,14 @@ function App() {
                     placeholder="Enter time of day"
                     className="metadata_field"
                     onChange={(e) => setTimeOfDay(e.target.value)}
+                />
+                <p>One word for Main Asset Used in the Clip</p>
+                <input
+                    type="text"
+                    value={assetInUse}
+                    placeholder="Enter the asset in use in game (i.e. car, weapon, spaceship)"
+                    className="metadata_field"
+                    onChange={(e) => setAssetInUse(e.target.value)}
                 />
     
                 <p>Car Type</p>
